@@ -1,29 +1,48 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
- <head>
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pratibimb - Cultural Event Registration</title>
+  <title>Pratibimb - Cultural Event Registration | Nagpur Institute of Technology</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700;800&family=Rozha+One&family=Yatra+One&display=swap" rel="stylesheet">
   <style>
+    :root {
+      /* Deep festive background */
+      --bg-base: #0B0914;
+      --bg-gradient-1: #1A1025;
+      --bg-gradient-2: #0F172A;
+      
+      /* Vibrant cultural accents */
+      --accent-pink: #FF3366;
+      --accent-cyan: #00D4FF;
+      --accent-gold: #FFD700;
+      --accent-purple: #9D4EDD;
+
+      /* UI Elements */
+      --card-bg: rgba(255, 255, 255, 0.03);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --text-primary: #FFFFFF;
+      --text-secondary: #B4A9C4;
+    }
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
-    html, body {
-      height: 100%;
-      width: 100%;
-    }
-
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-      color: #e0e0e0;
-      overflow-x: hidden;
+      font-family: 'Outfit', sans-serif;
+      background: var(--bg-base);
+      color: var(--text-primary);
+      min-height: 100vh;
       position: relative;
+      overflow-x: hidden;
     }
 
+    /* Premium Ambient Background */
     body::before {
       content: '';
       position: fixed;
@@ -32,50 +51,48 @@
       width: 100%;
       height: 100%;
       background: 
-        radial-gradient(circle at 20% 50%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(255, 107, 157, 0.08) 0%, transparent 50%);
-      animation: float 15s ease-in-out infinite;
-      pointer-events: none;
-      z-index: -1;
+        radial-gradient(circle at 15% 30%, rgba(255, 51, 102, 0.08), transparent 35%),
+        radial-gradient(circle at 85% 20%, rgba(0, 212, 255, 0.08), transparent 35%),
+        radial-gradient(circle at 50% 80%, rgba(157, 78, 221, 0.08), transparent 40%);
+      z-index: -2;
     }
 
-    body::after {
-      content: '';
+    .ambient-orb-1, .ambient-orb-2 {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background:
-        radial-gradient(circle at 50% 20%, rgba(255, 215, 0, 0.05) 0%, transparent 50%),
-        radial-gradient(circle at 30% 80%, rgba(0, 212, 255, 0.08) 0%, transparent 50%);
-      animation: float 20s ease-in-out infinite reverse;
-      pointer-events: none;
+      border-radius: 50%;
+      filter: blur(80px);
       z-index: -1;
+      opacity: 0.5;
+      animation: float 20s ease-in-out infinite alternate;
+    }
+
+    .ambient-orb-1 {
+      width: 40vw;
+      height: 40vw;
+      background: rgba(255, 215, 0, 0.05);
+      top: -10vw;
+      right: -10vw;
+    }
+
+    .ambient-orb-2 {
+      width: 50vw;
+      height: 50vw;
+      background: rgba(0, 212, 255, 0.04);
+      bottom: -15vw;
+      left: -15vw;
+      animation-direction: alternate-reverse;
+      animation-duration: 25s;
     }
 
     @keyframes float {
-      0%, 100% {
-        transform: translate(0, 0);
-      }
-      25% {
-        transform: translate(30px, -30px);
-      }
-      50% {
-        transform: translate(0, 50px);
-      }
-      75% {
-        transform: translate(-30px, -20px);
-      }
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(5vw, 5vw) scale(1.1); }
     }
 
     .main-wrapper {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      overflow-y: auto;
-      padding: 40px 20px;
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 60px 20px;
       position: relative;
       z-index: 1;
     }
@@ -83,386 +100,418 @@
     /* Header Section */
     .header {
       text-align: center;
-      margin-bottom: 50px;
-      animation: slideDown 0.8s ease-out;
+      margin-bottom: 70px;
+      animation: fadeUp 1s ease-out;
+    }
+
+    .college-name {
+      font-size: 15px;
+      text-transform: uppercase;
+      letter-spacing: 5px;
+      color: var(--accent-gold);
+      margin-bottom: 25px;
+      font-weight: 600;
+      text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
     }
 
     .hindi-title {
-      font-family: 'Segoe Script', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      font-size: 72px;
-      font-weight: 900;
-      color: #ffd700;
-      margin-bottom: 15px;
-      letter-spacing: 3px;
-      text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.7), 0 0 30px rgba(255, 215, 0, 0.3);
+      font-family: 'Rozha One', 'Yatra One', serif;
+      font-size: 85px;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-pink) 50%, var(--accent-purple) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 5px;
+      filter: drop-shadow(0 10px 25px rgba(255, 51, 102, 0.2));
+      line-height: 1.2;
     }
 
     .english-title {
-      font-size: 36px;
-      color: #00d4ff;
-      margin-bottom: 10px;
-      font-weight: 600;
-      letter-spacing: 1px;
+      font-size: 34px;
+      font-weight: 400;
+      letter-spacing: 14px;
+      color: var(--text-primary);
+      margin-bottom: 20px;
+      text-transform: uppercase;
     }
 
     .subtitle {
-      font-size: 16px;
-      color: #b0b0b0;
-      margin-bottom: 5px;
+      font-size: 18px;
+      color: var(--text-secondary);
+      font-weight: 300;
+      max-width: 600px;
+      margin: 0 auto 20px auto;
     }
 
     .src-credit {
       font-size: 14px;
-      color: #ff6b9d;
-      font-weight: 500;
-      margin-top: 10px;
+      color: var(--text-primary);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      display: inline-block;
+      padding: 10px 25px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 30px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     }
 
-    /* Events Container */
+    /* Events Grid */
     .events-container {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 25px;
-      max-width: 1200px;
-      margin: 0 auto;
-      width: 100%;
-      animation: fadeIn 1s ease-out 0.3s both;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      animation: fadeUp 1s ease-out 0.2s both;
     }
 
     /* Event Card */
     .event-card {
-      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-      border: 2px solid #00d4ff;
-      border-radius: 15px;
-      padding: 30px 25px;
-      cursor: pointer;
-      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 40px 30px;
+      backdrop-filter: blur(20px);
+      transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
       position: relative;
       overflow: hidden;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     }
 
     .event-card::before {
       content: '';
       position: absolute;
       top: 0;
-      left: -100%;
+      left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.2), transparent);
-      transition: left 0.5s ease;
-    }
-
-    .event-card:hover::before {
-      left: 100%;
+      background: linear-gradient(135deg, rgba(255,51,102,0.1), rgba(0,212,255,0.05));
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      z-index: 0;
     }
 
     .event-card:hover {
-      transform: translateY(-12px) scale(1.02);
-      border-color: #ff6b9d;
-      box-shadow: 0 15px 40px rgba(0, 212, 255, 0.3), 0 0 30px rgba(255, 107, 157, 0.2);
-      background: linear-gradient(135deg, #1e2a47 0%, #1a1f3a 100%);
+      transform: translateY(-10px);
+      border-color: rgba(255, 51, 102, 0.4);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(255, 51, 102, 0.15);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .event-card:hover::before {
+      opacity: 1;
+    }
+
+    .event-card > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Premium Emoji Icon Container */
+    .icon-container {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.02));
+      border: 1px solid rgba(255,255,255,0.15);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.3), inset 0 0 15px rgba(255,255,255,0.05);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 38px;
+      margin-bottom: 25px;
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .event-card:hover .icon-container {
+      transform: scale(1.15) translateY(-5px);
+      border-color: rgba(255, 51, 102, 0.5);
+      box-shadow: 0 15px 30px rgba(255, 51, 102, 0.2), inset 0 0 20px rgba(255,255,255,0.1);
     }
 
     .event-icon {
-      font-size: 56px;
-      margin-bottom: 15px;
-      display: inline-block;
-      filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.4));
-      transition: filter 0.3s ease;
-    }
-
-    .event-card:hover .event-icon {
-      filter: drop-shadow(0 0 15px rgba(0, 212, 255, 0.6));
+      width: 42px;
+      height: 42px;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4));
     }
 
     .event-name {
-      font-size: 22px;
-      font-weight: 700;
-      color: #ffd700;
-      margin-bottom: 12px;
+      font-size: 26px;
+      font-weight: 600;
+      margin-bottom: 15px;
+      color: var(--text-primary);
       letter-spacing: 0.5px;
     }
 
     .event-description {
-      font-size: 13px;
-      color: #a0a0a0;
-      margin-bottom: 18px;
-      line-height: 1.5;
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 30px;
+      flex-grow: 1;
+      font-weight: 300;
     }
 
     .register-btn {
       width: 100%;
-      padding: 12px 20px;
-      background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
-      color: #000;
-      border: none;
-      border-radius: 8px;
-      font-weight: 700;
+      padding: 15px 24px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01));
+      color: var(--text-primary);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 10px;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 500;
       font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
       cursor: pointer;
       transition: all 0.3s ease;
-      text-transform: uppercase;
-      letter-spacing: 1px;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(5px);
+    }
+
+    .register-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, var(--accent-pink) 0%, var(--accent-purple) 100%);
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.3s ease;
     }
 
     .register-btn:hover {
-      background: linear-gradient(135deg, #ff6b9d 0%, #ff4757 100%);
-      transform: scale(1.05);
-      box-shadow: 0 5px 15px rgba(255, 107, 157, 0.4);
+      border-color: transparent;
+      box-shadow: 0 8px 20px rgba(255, 51, 102, 0.3);
+      transform: translateY(-2px);
     }
 
-    .register-btn:active {
-      transform: scale(0.98);
-    }
-
-    /* Animations */
-    @keyframes slideDown {
-      from {
-        opacity: 0;
-        transform: translateY(-30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-      }
-      to {
-        opacity: 1;
-      }
+    .register-btn:hover::before {
+      opacity: 1;
     }
 
     /* Footer */
     .footer {
       text-align: center;
-      margin-top: 50px;
-      padding-top: 30px;
-      border-top: 1px solid rgba(0, 212, 255, 0.2);
-      color: #808080;
-      font-size: 13px;
-      font-weight: 600;
+      margin-top: 80px;
+      padding-top: 40px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      color: #888;
+      font-size: 14px;
+      font-weight: 300;
+      letter-spacing: 1px;
+    }
+
+    .footer p {
+      margin-bottom: 8px;
+    }
+
+    /* Animations */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     /* Responsive Design */
     @media (max-width: 768px) {
-      .hindi-title {
-        font-size: 52px;
-      }
-
-      .english-title {
-        font-size: 26px;
-      }
-
-      .events-container {
-        grid-template-columns: 1fr;
-        gap: 20px;
-      }
-
-      .event-card {
-        padding: 25px 20px;
-      }
-
-      .event-name {
-        font-size: 20px;
-      }
-
-      .main-wrapper {
-        padding: 20px 15px;
-      }
+      .hindi-title { font-size: 60px; }
+      .english-title { font-size: 26px; letter-spacing: 10px; }
+      .college-name { font-size: 13px; letter-spacing: 3px; }
+      .events-container { gap: 20px; }
+      .event-card { padding: 30px 20px; }
     }
 
     @media (max-width: 480px) {
-      .hindi-title {
-        font-size: 40px;
-        margin-bottom: 10px;
-      }
-
-      .english-title {
-        font-size: 20px;
-      }
-
-      .header {
-        margin-bottom: 30px;
-      }
-
-      .event-icon {
-        font-size: 44px;
-      }
-
-      .event-name {
-        font-size: 18px;
-      }
-
-      .register-btn {
-        font-size: 12px;
-        padding: 10px 15px;
-      }
+      .hindi-title { font-size: 50px; }
+      .english-title { font-size: 20px; letter-spacing: 6px; }
+      .subtitle { font-size: 15px; }
+      .main-wrapper { padding: 40px 15px; }
+      .icon-container { width: 65px; height: 65px; font-size: 30px; }
+      .event-name { font-size: 22px; }
     }
   </style>
-  <style>@view-transition { navigation: auto; }</style>
-  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
-  <script src="/_sdk/element_sdk.js" type="text/javascript"></script>
-  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
- </head>
- <body>
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute; visibility:hidden;">
+    <defs>
+      <linearGradient id="icon-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#FF3366" />
+        <stop offset="50%" stop-color="#9D4EDD" />
+        <stop offset="100%" stop-color="#00D4FF" />
+      </linearGradient>
+    </defs>
+  </svg>
+  <div class="ambient-orb-1"></div>
+  <div class="ambient-orb-2"></div>
+
   <div class="main-wrapper">
-   <header class="header">
-    <div class="hindi-title">
-     प्रतिबिंब
-    </div>
-    <div class="english-title">
-     PRATIBIMB
-    </div>
-    <div class="subtitle">
-     Cultural Event Registration
-    </div>
-    <div class="src-credit">
-     🎭 Organized by SRC Committee
-    </div>
-   </header>
-   <main class="events-container"><!-- Fashion Show -->
-    <div class="event-card">
-     <div class="event-icon">
-      👗
-     </div>
-     <div class="event-name">
-      Fashion Show
-     </div>
-     <div class="event-description">
-      Showcase your style and grace on the runway
-     </div><button class="register-btn" onclick="window.open('https://forms.gle/r44ddSeV7ZZKDVbQ7', '_blank', 'noopener,noreferrer')">Register Now</button>
-    </div><!-- Group Dance -->
-    <div class="event-card">
-     <div class="event-icon">
-      💃
-     </div>
-     <div class="event-name">
-      Group Dance
-     </div>
-     <div class="event-description">
-      Perform synchronized moves with your team
-     </div><button class="register-btn" onclick="window.open('https://forms.gle/gUe4qRnVhBLqMFJp9', '_blank', 'noopener,noreferrer')">Register Now</button>
-    </div><!-- Solo Dance -->
-    <div class="event-card">
-     <div class="event-icon">
-      🩰
-     </div>
-     <div class="event-name">
-      Solo Dance
-     </div>
-     <div class="event-description">
-      Express yourself through solo dance performance
-     </div><button class="register-btn" onclick="window.open('https://forms.gle/osJfxZ7CJ7sL9E126', '_blank', 'noopener,noreferrer')">Register Now</button>
-    </div><!-- Solo Singing -->
-    <div class="event-card">
-     <div class="event-icon">
-      🎤
-     </div>
-     <div class="event-name">
-      Solo Singing
-     </div>
-     <div class="event-description">
-      Mesmerize the audience with your voice
-     </div><button class="register-btn" onclick="window.open('https://forms.gle/mXmCr3U6pncQwyFe7', '_blank', 'noopener,noreferrer')">Register Now</button>
-    </div><!-- Group Song -->
-    <div class="event-card">
-     <div class="event-icon">
-      🎵
-     </div>
-     <div class="event-name">
-      Group Song
-     </div>
-     <div class="event-description">
-      Harmonize with your group members
-     </div><button class="register-btn" onclick="window.open('https://forms.gle/7o4ECECGGC1Kg3ML6', '_blank', 'noopener,noreferrer')">Register Now</button>
-    </div><!-- Short Play -->
-    <div class="event-card">
-     <div class="event-icon">
-      🎬
-     </div>
-     <div class="event-name">
-      Short Play
-     </div>
-     <div class="event-description">
-      Bring stories to life on stage
-     </div><button class="register-btn" onclick="window.open('https://forms.gle/SdWv2pj8DmCJWm6M7', '_blank', 'noopener,noreferrer')">Register Now</button>
-    </div><!-- Mime -->
-    <div class="event-card">
-     <div class="event-icon">
-      🤐
-     </div>
-     <div class="event-name">
-      Mime
-     </div>
-     <div class="event-description">
-      Tell stories without speaking
-     </div><button class="register-btn" onclick="window.open('https://forms.gle/gGfmWvYFFUBTQub37', '_blank', 'noopener,noreferrer')">Register Now</button>
-    </div><!-- Skit -->
-    <div class="event-card">
-     <div class="event-icon">
-      🎭
-     </div>
-     <div class="event-name">
-      Skit
-     </div>
-     <div class="event-description">
-      Entertain with comedic or dramatic sketches
-     </div><button class="register-btn" onclick="window.open('https://forms.gle/N5u956YEijX5H2BU9', '_blank', 'noopener,noreferrer')">Register Now</button>
-    </div><!-- Director's Special -->
-    <div class="event-card">
-     <div class="event-icon">
-      🎥
-     </div>
-     <div class="event-name">
-      Director's Special
-     </div>
-     <div class="event-description">
-      A unique creative showcase experience
-     </div><button class="register-btn" onclick="window.open('https://forms.gle/rXU5c8yffPs35yoT6', '_blank', 'noopener,noreferrer')">Register Now</button>
-    </div><!-- Laughter Show -->
-    <div class="event-card">
-     <div class="event-icon">
-      😂
-     </div>
-     <div class="event-name">
-      Laughter Show
-     </div>
-     <div class="event-description">
-      Make everyone laugh with comedy
-     </div><button class="register-btn" onclick="window.open('https://forms.gle/qwKXbzk9Jh7u1qA3A', '_blank', 'noopener,noreferrer')">Register Now</button>
-    </div><!-- Art Gallery -->
-    <div class="event-card">
-     <div class="event-icon">
-      🎨
-     </div>
-     <div class="event-name">
-      Art Gallery
-     </div>
-     <div class="event-description">
-      Showcase your artistic creations and vision
-     </div><button class="register-btn" onclick="window.open('https://forms.gle/C3cQ2W4MkzDRYgRc6', '_blank', 'noopener,noreferrer')">Register Now</button>
-    </div><!-- Anchoring -->
-    <div class="event-card">
-     <div class="event-icon">
-      🎙️
-     </div>
-     <div class="event-name">
-      Anchoring
-     </div>
-     <div class="event-description">
-      Be the voice that guides the event with confidence
-     </div><button class="register-btn" onclick="window.open('https://forms.gle/j5U1FKRKZ5PQGQ3v9', '_blank', 'noopener,noreferrer')">Register Now</button>
-    </div>
-   </main>
-   <footer class="footer">
-    <p>© 2026 Pratibimb - Cultural Event by Student Representative Council | All Rights Reserved</p>
-    <p>Page by: Sumit Sawankar</p>
-   </footer>
+    <header class="header">
+      <div class="college-name">Nagpur Institute of Technology</div>
+      <div class="hindi-title">प्रतिबिंब</div>
+      <div class="english-title">Pratibimb</div>
+      <div class="subtitle">An Evening of Cultural Brilliance & Artistic Expression</div>
+      <div class="src-credit">Organized by SRC Committee</div>
+    </header>
+
+    <main class="events-container">
+      <!-- Fashion Show -->
+      <div class="event-card">
+        <div class="icon-container">
+          <svg class="event-icon" viewBox="0 0 24 24" fill="none" stroke="url(#icon-grad)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.38 3.46L16 2a4 4 0 01-8 0L3.62 3.46a2 2 0 00-1.34 2.23l.58 3.47a1 1 0 00.99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 002-2V10h2.15a1 1 0 00.99-.84l.58-3.47a2 2 0 00-1.34-2.23z"/>
+          </svg>
+        </div>
+        <div class="event-name">Fashion Show</div>
+        <div class="event-description">Showcase your style and grace on the runway. Define the trends of tomorrow.</div>
+        <button class="register-btn" onclick="window.open('https://forms.gle/r44ddSeV7ZZKDVbQ7', '_blank', 'noopener,noreferrer')">Register Now</button>
+      </div>
+
+      <!-- Group Dance -->
+      <div class="event-card">
+        <div class="icon-container">
+          <svg class="event-icon" viewBox="0 0 24 24" fill="none" stroke="url(#icon-grad)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <path d="M23 21v-2a4 4 0 00-3-3.87"/>
+            <path d="M16 3.13a4 4 0 010 7.75"/>
+          </svg>
+        </div>
+        <div class="event-name">Group Dance</div>
+        <div class="event-description">Perform synchronized moves with your team. Move as one, mesmerize all.</div>
+        <button class="register-btn" onclick="window.open('https://forms.gle/gUe4qRnVhBLqMFJp9', '_blank', 'noopener,noreferrer')">Register Now</button>
+      </div>
+
+      <!-- Solo Dance -->
+      <div class="event-card">
+        <div class="icon-container">
+          <svg class="event-icon" viewBox="0 0 24 24" fill="none" stroke="url(#icon-grad)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+          </svg>
+        </div>
+        <div class="event-name">Solo Dance</div>
+        <div class="event-description">Express yourself through a captivating solo performance. Own the spotlight.</div>
+        <button class="register-btn" onclick="window.open('https://forms.gle/osJfxZ7CJ7sL9E126', '_blank', 'noopener,noreferrer')">Register Now</button>
+      </div>
+
+      <!-- Solo Singing -->
+      <div class="event-card">
+        <div class="icon-container">
+          <svg class="event-icon" viewBox="0 0 24 24" fill="none" stroke="url(#icon-grad)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2a3 3 0 00-3 3v7a3 3 0 006 0V5a3 3 0 00-3-3z"/>
+            <path d="M19 10v2a7 7 0 01-14 0v-2"/>
+            <line x1="12" y1="19" x2="12" y2="23"/>
+            <line x1="8" y1="23" x2="16" y2="23"/>
+          </svg>
+        </div>
+        <div class="event-name">Solo Singing</div>
+        <div class="event-description">Mesmerize the audience with your voice. Let your melody touch every heart.</div>
+        <button class="register-btn" onclick="window.open('https://forms.gle/mXmCr3U6pncQwyFe7', '_blank', 'noopener,noreferrer')">Register Now</button>
+      </div>
+
+      <!-- Group Song -->
+      <div class="event-card">
+        <div class="icon-container">
+          <svg class="event-icon" viewBox="0 0 24 24" fill="none" stroke="url(#icon-grad)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 18V5l12-2v13"/>
+            <circle cx="6" cy="18" r="3"/>
+            <circle cx="18" cy="16" r="3"/>
+          </svg>
+        </div>
+        <div class="event-name">Group Song</div>
+        <div class="event-description">Harmonize perfectly with your group members to create a symphony of voices.</div>
+        <button class="register-btn" onclick="window.open('https://forms.gle/7o4ECECGGC1Kg3ML6', '_blank', 'noopener,noreferrer')">Register Now</button>
+      </div>
+
+      <!-- Short Play -->
+      <div class="event-card">
+        <div class="icon-container">
+          <svg class="event-icon" viewBox="0 0 24 24" fill="none" stroke="url(#icon-grad)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="4" width="20" height="16" rx="2"/>
+            <path d="M2 8h20"/>
+            <path d="M6 4v4"/>
+            <path d="M10 4v4"/>
+            <path d="M14 4v4"/>
+            <path d="M18 4v4"/>
+          </svg>
+        </div>
+        <div class="event-name">Short Play</div>
+        <div class="event-description">Bring stories to life on stage. Deliver an unforgettable theatrical experience.</div>
+        <button class="register-btn" onclick="window.open('https://forms.gle/SdWv2pj8DmCJWm6M7', '_blank', 'noopener,noreferrer')">Register Now</button>
+      </div>
+
+      <!-- Mime -->
+      <div class="event-card">
+        <div class="icon-container">
+          <svg class="event-icon" viewBox="0 0 24 24" fill="none" stroke="url(#icon-grad)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M2 12a10 10 0 1020 0 10 10 0 00-20 0z"/>
+            <path d="M12 8v4"/>
+            <path d="M12 16h.01"/>
+            <path d="M9 10h.01"/>
+            <path d="M15 10h.01"/>
+          </svg>
+        </div>
+        <div class="event-name">Mime</div>
+        <div class="event-description">Tell powerful stories without speaking. Let your actions echo louder than words.</div>
+        <button class="register-btn" onclick="window.open('https://forms.gle/gGfmWvYFFUBTQub37', '_blank', 'noopener,noreferrer')">Register Now</button>
+      </div>
+
+      <!-- Skit -->
+      <div class="event-card">
+        <div class="icon-container">
+          <svg class="event-icon" viewBox="0 0 24 24" fill="none" stroke="url(#icon-grad)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <path d="M8 11h8"/>
+            <path d="M12 8v6"/>
+          </svg>
+        </div>
+        <div class="event-name">Skit</div>
+        <div class="event-description">Entertain with short, impactful comedic or dramatic sketches. Keep them hooked.</div>
+        <button class="register-btn" onclick="window.open('https://forms.gle/N5u956YEijX5H2BU9', '_blank', 'noopener,noreferrer')">Register Now</button>
+      </div>
+
+      <!-- Director's Special -->
+      <div class="event-card">
+        <div class="icon-container">
+          <svg class="event-icon" viewBox="0 0 24 24" fill="none" stroke="url(#icon-grad)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="23 7 16 12 23 17 23 7"/>
+            <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+          </svg>
+        </div>
+        <div class="event-name">Director's Special</div>
+        <div class="event-description">A unique creative showcase experience that transcends traditional boundaries.</div>
+        <button class="register-btn" onclick="window.open('https://forms.gle/rXU5c8yffPs35yoT6', '_blank', 'noopener,noreferrer')">Register Now</button>
+      </div>
+
+      <!-- Laughter Show -->
+      <div class="event-card">
+        <div class="icon-container">
+          <svg class="event-icon" viewBox="0 0 24 24" fill="none" stroke="url(#icon-grad)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+            <line x1="9" y1="9" x2="9.01" y2="9"/>
+            <line x1="15" y1="9" x2="15.01" y2="9"/>
+          </svg>
+        </div>
+        <div class="event-name">Laughter Show</div>
+        <div class="event-description">Make everyone laugh with your wit and humor. The stage is yours to conquer.</div>
+        <button class="register-btn" onclick="window.open('https://forms.gle/qwKXbzk9Jh7u1qA3A', '_blank', 'noopener,noreferrer')">Register Now</button>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <p>© 2026 Pratibimb - Cultural Event | Nagpur Institute of Technology</p>
+      <p>Organized by Student Representative Council</p>
+      <p>Page by: Sumit Sawankar</p>
+    </footer>
   </div>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9ca3b12400073faf',t:'MTc3MDQ3NTc0Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</body>
 </html>
